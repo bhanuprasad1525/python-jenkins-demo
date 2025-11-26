@@ -4,6 +4,7 @@ pipeline {
     environment {
         APP_NAME = 'python-jenkins-demo'
         VENV_DIR = 'venv'
+        PYTHONPATH = '.'
     }
 
     stages {
@@ -29,6 +30,7 @@ pipeline {
             steps {
                 sh '''
                     . $VENV_DIR/bin/activate
+                    export PYTHONPATH=$PYTHONPATH
                     pytest tests/
                 '''
             }
